@@ -3,19 +3,20 @@ package utils;
 import java.sql.*;
 
 public class SqlConnection {
-    public Connection connection;
+    public static Connection connection;
     Statement statement;
 
     public SqlConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/mail","swapnadeep","password");
+
+            connection = DriverManager.getConnection("jdbc:mysql://ec2-65-0-181-38.ap-south-1.compute.amazonaws.com:3306/mail","swapnadeep","");
 
             statement = connection.createStatement();
 
-            createDatabase(statement, "mail");
-            createAccountsTable(statement);
-            createMailsTable(statement);
+//            createDatabase(statement, "mail");
+//            createAccountsTable(statement);
+//            createMailsTable(statement);
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
         }
